@@ -29,21 +29,21 @@ st.dataframe(car_data) # exibindo os dados filtrados
 
 
 
-#botao adicionado
-hist_button = st.button("Create histogram")
+#caixa de seleção adicionado
+build_histogram = st.checkbox("Build histogram", value=True)
+build_scatter = st.checkbox("Build scatter plot", value=True)
 
-if hist_button:
-    st.write('Creating histogram for car sales ads dataset')
-    fig = px.histogram(car_data, x= 'odometer', color='type', nbins=30, title='Histogram of Vehicles')
-    st.plotly_chart(fig, use_container_width=True) 
-
-disp_button = st.button("Create dispersion graphic")
-
-if disp_button:
-    st.write('Creating a scatter plot for the car sales ads dataset')
-    fig = px.scatter(car_data, x= 'odometer', y= 'price', color='type', title='Scatter Plot')
+if build_histogram:
+    st.write("Histogram of odometer")
+    fig = px.histogram(car_data, x='odometer', color='type', nbins=30, title="Histogram of odometer by type")
     st.plotly_chart(fig, use_container_width=True)
     
+if build_scatter:
+    st.write("Scatter plot of price vs odometer")
+    fig2 = px.scatter(car_data, x='odometer', y='price', color='type', title="Scatter plot of price vs odometer by type")
+    st.plotly_chart(fig2, use_container_width=True)
+
+  
 st.header("Compare price distribution by model")
 man_list = sorted(car_data['model'].dropna().unique())
 if len(man_list) >= 2:
