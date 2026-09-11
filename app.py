@@ -58,8 +58,7 @@ if len(man_list) >= 2:
     normalize = st.checkbox("Normalize histogram", value=False)
     compare_df = car_data[car_data['manufacturer'].isin([man1, man2])]
 
-    fig3 = px.histograma(compare_df, x='price', color='manufacturer', barmode='overlay', histnorm='percent' if normalize else None, title=f'Price distribution: {man1} vs {man2}')
+    fig3 = px.histogram(compare_df, x='price', color='manufacturer', barmode='overlay', histnorm='percent' if normalize else None, title=f'Price distribution: {man1} vs {man2}')
     
-    fig3.update_Layout(yaxis_title='Percentage' if normalize else 'Count')
+    fig3.update_layout(yaxis_title='Percentage' if normalize else 'Count')
     st.plotly_chart(fig3, use_container_width=True)
-        
