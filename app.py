@@ -5,7 +5,7 @@ import plotly.express as px
 st.set_page_config(page_title="Vehicles US", page_icon=":car:", layout="wide") #configurando a página
 st.title("Vehicles analysis in the USA") #adicionado título
 
-car_data = pd.read_csv(r"vehicles.csv") # lendo os dados
+car_data = pd.read_csv(r"vehicles_clean.csv") # lendo os dados
  
 #titulo adicionado
 st.header("Data viewer")
