@@ -9,15 +9,13 @@ car_data = pd.read_csv(r"vehicles_clean.csv") # lendo os dados
 
 st.sidebar.header("Filters") #adicionado título na barra lateral
 min_p, max_p = int(car_data['price'].min()), int(car_data['price'].max())
-p1, p2 = st.sidebar.slider("Select price range", min_p, max_p, (min_p, 50000)) #adicionado slider para selecionar faixa de preço
+p1, p2 = st.sidebar.slider("Select price range", min_p, max_p, (min_p, max_p)) #adicionado slider para selecionar faixa de preço
 car_data = car_data[(car_data['price'] >= p1) & (car_data['price'] <= p2)] # filtrando os dados com base na faixa de preço selecionada
  
 #titulo adicionado
 st.header("Data viewer")
 include_small = st.checkbox("Include cars with price below 1000", value=False)
-filtered_data = car_data if include_small else car_data[car_data['model'].isin(car_data['model'].value_counts()[lambda x: x > 100].index)]
 
-st.dataframe(filtered_data) # exibindo os dados filtrados
 
 if include_small:
     car_data = car_data[car_data['price'] < 1000]
