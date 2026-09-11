@@ -22,7 +22,3 @@
 - Pandas
 - Plotly Express
 - Render (deploy)
-
-
-                 
-                
